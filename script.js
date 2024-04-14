@@ -3,9 +3,27 @@ document.addEventListener ("DOMContentLoaded",function(){
     xhr.onreadystatechange=()=>{
         if (xhr.readyState===4 && xhr.status===200){
             const data =JSON.parse(xhr.responseText);
-            displayUsers(data);
+            mostrarUsuarios(data);
         }
     };
 
+    xhr.onerror=()=>{
+        console.error('Error en la solicitud Ajax');
+        };
+   
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+    xhr.send();
     
+    
+    function mostrarUsuarios(usuarios){
+        const usuariosLista = document.getElementById('usuariosLista');
+        usuarios.forEach(usuario => {
+            const li= document.createElement('li');
+            li.innerhtml=`<strong>${usuario.name}</strong> - ${usuario.email}`;
+            usuariosLista.appendChild(li);
+            
+        });
+    }
+
+
 });
