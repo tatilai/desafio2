@@ -19,7 +19,7 @@ document.addEventListener ("DOMContentLoaded",function(){
         const usuariosLista = document.getElementById('usuariosLista');
         usuarios.forEach(usuario => {
             const li= document.createElement('li');
-            li.innerhtml=`<strong>${usuario.name}</strong> - ${usuario.email}`;
+            li.innerHTML=`<strong>${usuario.name}</strong> - ${usuario.email}`;
             usuariosLista.appendChild(li);
             
         });
